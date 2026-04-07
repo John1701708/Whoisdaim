@@ -1,0 +1,725 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Lahore Tribune - Special Investigation</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:wght@300;400;700;900&family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Merriweather', serif;
+            background: #f5f5f5;
+            color: #1a1a1a;
+            line-height: 1.6;
+        }
+
+        .top-bar {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 8px 0;
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            letter-spacing: 1px;
+        }
+
+        .top-bar-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .date-weather {
+            display: flex;
+            gap: 20px;
+        }
+
+        header {
+            background: #fff;
+            border-bottom: 3px solid #c41e3a;
+            padding: 20px 0;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            text-align: center;
+        }
+
+        .logo {
+            font-size: 48px;
+            font-weight: 900;
+            color: #1a1a1a;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            margin-bottom: 5px;
+        }
+
+        .tagline {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #666;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+        }
+
+        nav {
+            margin-top: 15px;
+            padding-top: 15px;
+            border-top: 1px solid #eee;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        nav a {
+            color: #1a1a1a;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        nav a:hover {
+            color: #c41e3a;
+        }
+
+        .breaking-news {
+            background: #c41e3a;
+            color: white;
+            padding: 12px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-size: 14px;
+            animation: flash 2s infinite;
+        }
+
+        @keyframes flash {
+            0%, 100% { background: #c41e3a; }
+            50% { background: #8b0000; }
+        }
+
+        main {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            background: #fff;
+        }
+
+        .article-header {
+            margin-bottom: 30px;
+        }
+
+        .kicker {
+            color: #c41e3a;
+            font-family: 'Roboto', sans-serif;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 10px;
+        }
+
+        h1 {
+            font-size: 42px;
+            font-weight: 900;
+            line-height: 1.2;
+            margin-bottom: 15px;
+            color: #1a1a1a;
+        }
+
+        .deck {
+            font-size: 20px;
+            color: #444;
+            font-weight: 300;
+            line-height: 1.4;
+            margin-bottom: 20px;
+            font-family: 'Roboto', sans-serif;
+        }
+
+        .byline {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            color: #666;
+            border-top: 1px solid #ddd;
+            border-bottom: 1px solid #ddd;
+            padding: 15px 0;
+            margin-bottom: 30px;
+        }
+
+        .byline .author {
+            color: #1a1a1a;
+            font-weight: 700;
+        }
+
+        .byline .date {
+            margin-left: 15px;
+            padding-left: 15px;
+            border-left: 1px solid #ddd;
+        }
+
+        .hero-image {
+            width: 100%;
+            margin-bottom: 10px;
+            position: relative;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 500px;
+            object-fit: cover;
+            display: block;
+        }
+
+        .image-caption {
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            color: #666;
+            font-style: italic;
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .article-body {
+            font-size: 18px;
+            line-height: 1.8;
+        }
+
+        .article-body p {
+            margin-bottom: 25px;
+            text-align: justify;
+        }
+
+        .drop-cap::first-letter {
+            float: left;
+            font-size: 80px;
+            line-height: 0.8;
+            padding-right: 15px;
+            color: #c41e3a;
+            font-weight: 900;
+        }
+
+        .abuse-section {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 40px;
+            margin: 40px -20px;
+        }
+
+        .abuse-section h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            color: #c41e3a;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .abuse-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .abuse-card {
+            background: #2a2a2a;
+            padding: 25px;
+            border-left: 5px solid #c41e3a;
+        }
+
+        .abuse-text {
+            font-size: 18px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+            color: #fff;
+        }
+
+        .abuse-author {
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+            color: #c41e3a;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+
+        .family-section {
+            background: #ffebee;
+            border: 3px solid #c62828;
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .family-section h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #c62828;
+            margin-bottom: 20px;
+            text-align: center;
+            border-bottom: 2px solid #c62828;
+            padding-bottom: 10px;
+        }
+
+        .family-member {
+            background: #fff;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-left: 4px solid #c62828;
+        }
+
+        .family-member h4 {
+            color: #c62828;
+            font-size: 16px;
+            margin-bottom: 10px;
+            font-family: 'Roboto', sans-serif;
+            text-transform: uppercase;
+        }
+
+        .family-member p {
+            font-size: 15px;
+            color: #333;
+            margin: 0;
+            text-align: left;
+        }
+
+        .pull-quote {
+            float: right;
+            width: 300px;
+            margin: 20px -100px 20px 40px;
+            padding: 25px;
+            border-left: 5px solid #c41e3a;
+            background: #f9f9f9;
+            font-size: 22px;
+            font-style: italic;
+            color: #333;
+            line-height: 1.4;
+        }
+
+        .pull-quote cite {
+            display: block;
+            margin-top: 15px;
+            font-size: 14px;
+            font-style: normal;
+            font-family: 'Roboto', sans-serif;
+            color: #666;
+            font-weight: 500;
+        }
+
+        .info-box {
+            background: #f5f5f5;
+            border: 1px solid #ddd;
+            padding: 25px;
+            margin: 30px 0;
+        }
+
+        .info-box h3 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            color: #c41e3a;
+        }
+
+        .info-box ul {
+            list-style: none;
+            font-family: 'Roboto', sans-serif;
+            font-size: 14px;
+        }
+
+        .info-box li {
+            padding: 8px 0;
+            border-bottom: 1px dashed #ddd;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-box li::before {
+            content: "▸";
+            color: #c41e3a;
+            margin-right: 10px;
+            font-weight: bold;
+        }
+
+        .wanted-section {
+            background: #f5f5dc;
+            border: 3px solid #8b4513;
+            padding: 40px;
+            text-align: center;
+            margin: 40px 0;
+            position: relative;
+        }
+
+        .wanted-section::before {
+            content: 'WANTED';
+            position: absolute;
+            top: -15px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #8b4513;
+            color: white;
+            padding: 5px 30px;
+            font-family: 'Roboto', sans-serif;
+            font-weight: 700;
+            letter-spacing: 5px;
+            font-size: 14px;
+        }
+
+        .wanted-section h2 {
+            font-size: 48px;
+            color: #8b0000;
+            text-transform: uppercase;
+            letter-spacing: 8px;
+            margin: 20px 0;
+        }
+
+        .criminal-details {
+            font-family: 'Roboto', sans-serif;
+            font-size: 16px;
+            margin: 20px 0;
+            line-height: 1.8;
+        }
+
+        .aliases {
+            background: #fff;
+            padding: 20px;
+            margin: 20px 0;
+            border: 2px dashed #8b4513;
+        }
+
+        .aliases strong {
+            color: #8b4513;
+        }
+
+        .reward-box {
+            background: #006400;
+            color: #fff;
+            display: inline-block;
+            padding: 20px 40px;
+            margin: 20px 0;
+            font-size: 28px;
+            font-weight: 700;
+        }
+
+        footer {
+            background: #1a1a1a;
+            color: #fff;
+            padding: 40px 20px;
+            text-align: center;
+            font-family: 'Roboto', sans-serif;
+            font-size: 13px;
+        }
+
+        .footer-links {
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 12px;
+        }
+
+        .copyright {
+            color: #666;
+            margin-top: 20px;
+        }
+
+        @media (max-width: 768px) {
+            .logo { font-size: 32px; }
+            h1 { font-size: 28px; }
+            .pull-quote { 
+                float: none; 
+                width: 100%; 
+                margin: 20px 0; 
+            }
+            .hero-image img { height: 300px; }
+        }
+    </style>
+</head>
+<body>
+    <div class="top-bar">
+        <div class="top-bar-content">
+            <div class="date-weather">
+                <span>Tuesday, April 8, 2026</span>
+                <span>|</span>
+                <span>Lahore, Pakistan</span>
+                <span>|</span>
+                <span>32°C Sunny</span>
+            </div>
+            <div>Edition: International | Updated 14 minutes ago</div>
+        </div>
+    </div>
+
+    <header>
+        <div class="header-content">
+            <div class="logo">The Lahore Tribune</div>
+            <div class="tagline">Truth Without Fear • Since 1947</div>
+            <nav>
+                <ul>
+                    <li><a href="#">National</a></li>
+                    <li><a href="#">Punjab</a></li>
+                    <li><a href="#">Crime</a></li>
+                    <li><a href="#">Investigations</a></li>
+                    <li><a href="#">Politics</a></li>
+                    <li><a href="#">Sports</a></li>
+                    <li><a href="#">Opinion</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <div class="breaking-news">
+        🚨 BREAKING: Punjab Police Launch Manhunt for Notorious Criminal | Multiple Arrest Warrants Issued | Public Urged to Report Sightings
+    </div>
+
+    <main>
+        <article>
+            <div class="article-header">
+                <div class="kicker">Special Investigation</div>
+                <h1>The Dalaal of Gandi Bambi: Inside Pakistan's Most Degenerate Criminal Dynasty</h1>
+                <div class="deck">
+                    How Daim Bahadur transformed his entire bloodline into a commodity—selling his mother, sisters, and dignity for pocket change in the sewers of Lahore
+                </div>
+                <div class="byline">
+                    <span class="author">By Ahmed Hassan, Senior Investigative Correspondent</span>
+                    <span class="date">April 8, 2026 | 8:30 AM PST</span>
+                </div>
+            </div>
+
+            <!-- ============================================================ -->
+            <!-- BAS YAHAN PHOTO DAALO: images/daim.jpg -->
+            <!-- ============================================================ -->
+            <div class="hero-image">
+                <img src="images/daim.jpg" alt="Daim Bahadur, also known as Ponka Bondi">
+            </div>
+            <!-- ============================================================ -->
+
+            <div class="image-caption">
+                Daim Bahadur, photographed near Cavalry Ground in 2019. Sources say he was attempting to solicit customers for his "family business" at the time of this image.
+            </div>
+
+            <div class="article-body">
+                <p class="drop-cap">In the festering bowels of Gandi Bambi, Lahore, where sewage mixes with shattered dreams, one name has achieved a perverse kind of immortality. <strong>Daim Bahadur</strong>—known to police, victims, and the few remaining humans with functioning morals as <strong>Ponka Bondi</strong>—has built an empire of filth so complete that it consumes not just strangers, but his own flesh and blood.</p>
+
+                <p>This is not merely the story of a criminal. This is the chronicle of a <strong>madarchod</strong> so devoid of shame that he turned his family into inventory, his home into a brothel, and his name into a curse whispered by mothers to frighten children.</p>
+
+                <p>"Is harami ka koi muqabla nahi," spits Inspector Muhammad Tariq, slamming his fist on a desk covered in case files stretching back fifteen years. "We've seen dalaals, we've seen pimps, we've seen human traffickers. Lekin yeh—yeh apni <strong>ammi bechta hai</strong>. Apni <strong>behn rent pe deta hai</strong>. Khoti ka bacha hai, bilkul <strong>beghairat</strong>, <strong>gandu</strong> awal darjay ka."</p>
+
+                <div class="pull-quote">
+                    "Main ne uski ami ko 50 rupee mein dekha. 50 rupee! Itne mein toh aajkal chai bhi nahi milti. Yeh madarchod apni maan ka rate 2 dollar rakhta hai."
+                    <cite>— Anonymous witness, Gandi Bambi market</cite>
+                </div>
+
+                <p>The Bahadur family was not always synonymous with moral bankruptcy. Neighbors recall a time when Daim's father, <strong>Allah Ditta Bahadur</strong>, worked as a day laborer—honest, if impoverished. But the rot began early in the eldest son, fertilized by the sludge of Gandi Bambi's streets and a genetic predisposition toward <strong>haraamkhori</strong> that would make a hyena blush.</p>
+
+                <p>"Woh toh shuru se hi <strong>gandu</strong> tha," recalls <strong>Chacha Barkat</strong>, a 70-year-old neighbor who has watched three generations of Bahadurs decay. "Chhota tha tab bhi <strong>lun khane</strong> ka shauq tha isko. Apni <strong>khala</strong> ko bhi nahi chhoda. Geera mandi ka <strong>badshah</strong> ban gaya hai ab—lekin yeh badshah apni <strong>bhainon ki izzat</strong> bech ke takhta sambhalta hai."</p>
+            </div>
+
+            <!-- FAMILY SECTION - PURI FAMILY KI GANDAGI -->
+            <div class="family-section">
+                <h3>🔥 The Bahadur Family: A Dynasty of Degenerates 🔥</h3>
+                
+                <div class="family-member">
+                    <h4>👵 Amna Bibi (The Mother) - "Product #1"</h4>
+                    <p><strong>"Lun ki sarkar"</strong> kehti hain isko mohallay ki auratein. 55 saal ki umar mein bhi is <strong>randi</strong> ne apni izzat bech di apne bete ke haathon. Daim ne iska rate card banaya: <strong>"Ammi Special: 100 rupay full night, 50 rupay quick service."</strong> Is <strong>madarchod aurat</strong> ne apne bete ke crime mein partnership ki—<strong>haraami maa ka haraami beta</strong>.</p>
+                </div>
+
+                <div class="family-member">
+                    <h4>👨 Allah Ditta (The Father) - "Lun Khaney Wala Darinda"</h4>
+                    <p>Pura mohalla janta hai is <strong>gandu baap</strong> ko. Roz shaam ko <strong>lund chusne</strong> jaata tha cavalry ground pe. Daim ne is se seekha—<strong>"baap ka raasta beta ne business banaya."</strong> Ab yeh <strong>bhosdiwala</strong> apni biwi ki earnings se sharab peeta hai. <strong>Kameena admi</strong>, apni hi family ko kharab kiya.</p>
+                </div>
+
+                <div class="family-member">
+                    <h4>👦 Bilal "Steve" (The Brother) - "Tata Chusney Wala"</h4>
+                    <p>Daim ka chhota bhai, iska partner in crime. <strong>"Steve Adams"</strong> ke naam se famous hai gay circles mein. Dono bhai milke <strong>lund ki dukaan</strong> chalate the. Ab yeh <strong>chootmarika</strong> bhaag gaya—kehte hain <strong>gand</strong> mein dum nahi tha isme, sirf <strong>chusna</strong> aata tha.</p>
+                </div>
+
+                <div class="family-member">
+                    <h4>👧 Shabana & Saima (The Sisters) - "50-50 Wali Behnen"</h4>
+                    <p>Daim ki do <strong>behnen</strong>, ab <strong>professional randiyan</strong>. Rate card: <strong>"Shabana: 50 rupay, Saima: 50 rupay, Combo Deal: 80 rupay."</strong> Dono ko is <strong>haraami bhai</strong> ne market mein utara. <strong>"Mera bhai mar jaye bas"</strong>—yeh kehti hain rooz, lekin <strong>madarchod</strong> zinda hai aur business chal raha hai.</p>
+                </div>
+
+                <div class="family-member">
+                    <h4>👴 Daim Bahadur (Ponka Bondi) - "The CEO of Family Prostitution"</h4>
+                    <p>Yeh <strong>madarchod</strong>, yeh <strong>gandu</strong>, yeh <strong>khoti ka bacha</strong>—isne apni puri family ko <strong>whore house</strong> bana diya. <strong>Beghairat</strong> ki definition hai yeh. <strong>Lun</strong> pe chalta hai, <strong>gaand</strong> mein dimaag hai. Police kehti hai isko <strong>"untouchable"</strong>—kyunki iski <strong>gand</strong> itni gandi hai ke koi haath nahi lagana chahta.</p>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>The systematic destruction of the Bahadur women began when Daim was barely sixteen. Sources indicate that his mother, <strong>Amna Bibi</strong>, was the first "product" in his portfolio—a <strong>lun ki sarkar</strong> who acquiesced to her son's demands rather than face the streets herself. "Maa ne bete ko <strong>dalaal</strong> banate dekha," says a family acquaintance. "Aur khamosh rahi. <strong>Randi</strong> kahin ki."</p>
+
+                <p>His sisters followed in rapid succession. <strong>Shabana</strong> and <strong>Saima</strong>, now aged 24 and 22 respectively, were allegedly "introduced to the market" by their brother before either could complete secondary education. Their rate—<strong>fifty rupees each</strong>, or eighty for both—has become a grim punchline in Gandi Bambi's teahouses.</p>
+
+                <p>"<strong>50-50 wali behnen</strong>," smirks a local shopkeeper, before spitting betel juice into the gutter. "Daim ka <strong>marketing</strong> dekh lo. <strong>Bhenchod</strong> ne apni khoon ki <strong>wholesale</strong> rates rakhe hain. Kisi ne pucha ke 'itna sasta kyun?' Bola '<strong>family discount hai bhai</strong>.'"</p>
+
+                <div class="info-box">
+                    <h3>⚠️ CONFIRMED INTELLIGENCE: The Ponka Bondi Enterprise</h3>
+                    <ul>
+                        <li><strong>CEO:</strong> Daim "Ponka Bondi" Bahadur (Madarchod-in-Chief)</li>
+                        <li><strong>Product Line:</strong> Mother (Amna), Sisters (Shabana, Saima), Occasional Cousins</li>
+                        <li><strong>Pricing:</strong> 50-100 rupay per session (family discount available)</li>
+                        <li><strong>Location:</strong> Gandi Bambi, Lahore (various back rooms and open sewers)</li>
+                        <li><strong>Partner:</strong> Bilal "Steve Adams" (Tata chusney wala, currently fugitive)</li>
+                        <li><strong>Specialties:</strong> "Ammi Special," "Behen Combo," "Full Family Package"</li>
+                        <li><strong>Payment:</strong> Cash, mobile credit, gol gappay (during recession)</li>
+                        <li><strong>Motto:</strong> "Ghar ki murgi daal barabar" (taken to criminal extremes)</li>
+                    </ul>
+                </div>
+
+                <p>The Tribune's investigation uncovered a ledger—crumpled, stained, but unmistakably in Daim's handwriting—that catalogues months of transactions. Entries include: "<strong>Ammi: 15 customers, 750 rupay</strong>," "<strong>Shabana: 23 customers, 1150 rupay</strong>," and "<strong>Saima (discount day): 31 customers, 1550 rupay</strong>." At the bottom, a note: "<strong>Steve ka hissa: 500 rupay</strong>."</p>
+
+                <p>"Yeh toh <strong>balance sheet</strong> hai <strong>haraamkhori</strong> ki," marvels Inspector Tariq, shaking his head. "<strong>MBA</strong> wale bhi itni accurate accounting nahi karte. Lekin yeh <strong>madarchod</strong> apni <strong>ammi behn</strong> ki <strong>gaand</strong> ka hisaab rakhta hai jaise <strong>share market</strong> ho."</p>
+            </div>
+
+            <!-- PUBLIC GALIYAN SECTION -->
+            <div class="abuse-section">
+                <h3>🎤 PUBLIC TESTIMONY: The Voice of Gandi Bambi 🎤</h3>
+                <div class="abuse-grid">
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>Harami ka bacha</strong> hai, <strong>madarchod</strong> hai! Apni <strong>ammi</strong> ko <strong>bechta</strong> hai, apni <strong>behn</strong> ko <strong>rent</strong> pe deta hai. Isse <strong>gandu</strong> koi nahi dekha maine. <strong>Khoti</strong> ne janam diya isko, <strong>khoti</strong> hi iski <strong>gaand mare</strong>!"
+                        </div>
+                        <div class="abuse-author">— Tanga Driver Rahimullah</div>
+                    </div>
+
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>Beghairat</strong> admi hai, <strong>sharam</strong> nahi aati! <strong>Bhenchod</strong>, <strong>lun</strong> pe chalta hai yeh. <strong>Gaandu</strong> awal darjay ka, <strong>geera mandi</strong> ka <strong>badshah</strong> ban gaya hai. <strong>Randi</strong> ka <strong>pilla</strong>!"
+                        </div>
+                        <div class="abuse-author">— Mohalla Committee Head</div>
+                    </div>
+
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>Chootmarika</strong> hai, <strong>bhosdiwala</strong>! Meri <strong>behn</strong> ko bhi <strong>offer</strong> kiya tha isne. Bola '<strong>meri behn</strong> bhi <strong>deti</strong> hai, aapki bhi <strong>lelo</strong>.' Main ne itni <strong>maar</strong> mari iski ke <strong>gaand</strong> mein <strong>fracture</strong> ho gaya. <strong>Kameena</strong>!"
+                        </div>
+                        <div class="abuse-author">— Ex-Business Partner (Angry)</div>
+                    </div>
+
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>Gandu</strong> saala, <strong>police</strong> ke <strong>samne</strong> bhi <strong>chipakli</strong> ki tarah <strong>phisal</strong> jata hai. <strong>Haraami</strong> hai, <strong>system</strong> ka <strong>hisssa</strong> lagta hai. <strong>Madarchod</strong> ko <strong>phansi</strong> honi chahiye!"
+                        </div>
+                        <div class="abuse-author">— Frustrated Police Constable</div>
+                    </div>
+
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>Lun</strong> ki <strong>dukaan</strong> hai yeh <strong>ghar</strong>. <strong>Amma</strong> <strong>randi</strong>, <strong>behnen</strong> <strong>randi</strong>, <strong>beta</strong> <strong>dalaal</strong>. <strong>Pura khandan</strong> <strong>haraamkhor</strong> hai. <strong>Allah</strong> inko <strong>barbaad</strong> kare!"
+                        </div>
+                        <div class="abuse-author">— Local Imam (Name Withheld)</div>
+                    </div>
+
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>50 rupay</strong> mein <strong>behn</strong>! <strong>50 rupay</strong> mein <strong>ammi</strong>! <strong>Choot</strong> itni <strong>sasti</strong> hai ke <strong>gareeb</strong> bhi <strong>roz</strong> aa jate hain. <strong>Madarchod</strong> ne <strong>mohallay</strong> ka <strong>naam</strong> <strong>kharab</strong> kiya hai!"
+                        </div>
+                        <div class="abuse-author">— Resident, Gandi Bambi</div>
+                    </div>
+
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>Steve Adams</strong> iska <strong>yaar</strong> tha. Dono <strong>milke</strong> <strong>lund</strong> ki <strong>factory</strong> chalate the. Ab <strong>Steve</strong> <strong>bhaag</strong> gaya, yeh <strong>akela</strong> <strong>family</strong> ko <strong>bech</strong> raha hai. <strong>Gandu</strong> <strong>number</strong> <strong>1</strong>!"
+                        </div>
+                        <div class="abuse-author">— Former Associate (Anonymous)</div>
+                    </div>
+
+                    <div class="abuse-card">
+                        <div class="abuse-text">
+                            "<strong>OLX</strong> pe <strong>nani</strong> bechne ki <strong>koshish</strong> ki thi isne! <strong>Chootmarika</strong>, <strong>cyber</strong> <strong>crime</strong> wale bhi <strong>has</strong> rahe the. <strong>Bhenchod</strong>, <strong>technology</strong> ka <strong>galat</strong> <strong>istemal</strong>!"
+                        </div>
+                        <div class="abuse-author">— Cyber Crime Reporter</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="article-body">
+                <p>Perhaps the most disturbing revelation from The Tribune's investigation concerns Daim's alleged attempts to expand his "franchise." Multiple sources claim he has approached other neighborhood families with proposals to "manage" their female relatives, offering his expertise in marketing and pricing.</p>
+
+                <p>"Mere <strong>betay</strong> ko bhi <strong>bula</strong> tha," claims <strong>Muhammad Yousuf</strong>, a father of three, his voice cracking with barely suppressed rage. "Kaha '<strong>tu</strong> bhi <strong>apni</strong> <strong>behn</strong> <strong>bech</strong>, <strong>ameer</strong> ho <strong>jayega</strong>.' Main ne <strong>itni</strong> <strong>maar</strong> <strong>mari</strong> iski ke <strong>hospital</strong> mein <strong>bharti</strong> ho gaya tha. <strong>Police</strong> bula li—<strong>kya</strong> <strong>ukhaad</strong> <strong>liya</strong>? <strong>Kuch</strong> <strong>nahi</strong>. Yeh toh <strong>system</strong> ka hi <strong>hissa</strong> hai <strong>lagta</strong> hai. <strong>Madarchod</strong> <strong>system</strong>."</p>
+
+                <p>Inspector Tariq, when asked about the difficulty of apprehending Bahadur, grows visibly agitated. "Pakadenge zaroor," he insists, lighting his fifth cigarette of the interview. "Lekin yeh jo <strong>system</strong> hai na, yeh <strong>madarchod</strong> <strong>system</strong>—yeh <strong>allow</strong> karta hai <strong>aise</strong> <strong>gandu</strong> <strong>logon</strong> ko <strong>zinda</strong> <strong>rehne</strong> ko. Agar mera <strong>haath</strong> <strong>chalta</strong> toh main <strong>goli</strong> <strong>maar</strong> deta isko. <strong>Public</strong> <strong>service</strong> hogi."</p>
+
+                <p>For the women of the Bahadur household, there appears to be no escape. Shabana and Saima have reportedly attempted to flee multiple times, only to be tracked down by their brother's network of informants and returned to "active duty." Their mother, Amna Bibi, has allegedly become complicit in her own exploitation, now assisting in the "recruitment" of her daughters' customers.</p>
+
+                <p>"<strong>Maa</strong> ne <strong>beti</strong> ko <strong>customer</strong> ko <strong>introduce</strong> kiya," whispers a neighbor, glancing nervously at the Bahadur residence. "<strong>Randi</strong> <strong>kahin</strong> ki. <strong>Pura</strong> <strong>khandan</strong> <strong>gandu</strong> hai. <strong>Baap</strong> <strong>lun</strong> <strong>khata</strong> hai, <strong>beta</strong> <strong>behn</strong> <strong>bechta</strong> hai, <strong>ammi</strong> <strong>manager</strong> bani hai. <strong>Kya</strong> <strong>ghar</strong> hai yaar."</p>
+
+                <p>As of press time, Daim Bahadur remains at large. The Tribune has learned that he was last spotted near Data Darbar, attempting to solicit religious pilgrims with offers of "blessed companionship" at discounted rates. Punjab Police have issued a statement promising "immediate action" following their next tea break.</p>
+
+                <p>Meanwhile, in the darkened rooms of Gandi Bambi, the family business continues. Another day, another fifty rupees, another piece of a mother's soul sold by her son. And somewhere in the distance, a madarchod laughs all the way to the gutter.</p>
+            </div>
+
+            <div class="wanted-section">
+                <h2>WANTED</h2>
+                <div class="aliases">
+                    <strong>LEGAL NAME:</strong> Daim Bahadur<br>
+                    <strong>KNOWN ALIASES:</strong> Ponka Bondi, Bhai Jaan, Wohi Wala, Gandi Bambi ka Gandi Aadmi, The Family Dalaal<br>
+                    <strong>FAMILY CRIMINALS:</strong> Amna Bibi (Ammi/Madarchod Maa), Shabana & Saima (Behnen/Randiyan), Bilal "Steve" (Bhai/Tata Chusney Wala), Allah Ditta (Baap/Lun Khaney Wala)<br>
+                    <strong>CHARGES:</strong> Family Prostitution, Human Trafficking (Blood Relations), Moral Bankruptcy, Public Nuisance, Being a Complete Madarchod<br>
+                    <strong>DISTINGUISHING FEATURES:</strong> Zero shame, Maximum beghairati, Gaand mein dimaag
+                </div>
+                <div class="criminal-details">
+                    <strong>HEADQUARTERS:</strong> Gandi Bambi, Lahore (The Family Whorehouse)<br>
+                    <strong>BUSINESS HOURS:</strong> 24/7 (Ammi night shift, Behnen day shift)<br>
+                    <strong>PRICING:</strong> Ammi: 100 rupay, Behnen: 50 rupay each, Combo: 80 rupay<br>
+                    <strong>SPECIAL OFFERS:</strong> "Buy 1 Behn Get 50% Off Second", "Ammi Special: Senior Citizen Discount"<br>
+                    <strong>CLASSIFICATION:</strong> Extreme Beghairat | Dangerous to All Family Values | Certified Madarchod
+                </div>
+                <div class="reward-box">
+                    RS. 1,00,000 REWARD
+                </div>
+                <p style="font-family: 'Roboto', sans-serif; font-size: 14px; margin-top: 20px;">
+                    For information leading to arrest and permanent imprisonment.<br>
+                    Contact: Punjab Police Hotline | Lahore Crime Branch | Gandi Bambi Vigilance Committee<br>
+                    <em>Family members encouraged to report—especially Amna Bibi, if she develops any shame.</em>
+                </p>
+            </div>
+
+        </article>
+    </main>
+
+    <footer>
+        <div class="footer-links">
+            <a href="#">About Us</a>
+            <a href="#">Contact</a>
+            <a href="#">Privacy Policy</a>
+            <a href="#">Terms of Service</a>
+            <a href="#">Corrections</a>
+            <a href="#">Careers</a>
+        </div>
+        <div class="copyright">
+            © 2026 The Lahore Tribune. All rights reserved.<br>
+            123 Mall Road, Lahore, Pakistan | Editor: Imran Sheikh<br>
+            <em>Independent journalism for an informed Punjab</em>
+        </div>
+    </footer>
+</body>
+</html>
